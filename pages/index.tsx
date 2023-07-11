@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import CreateProfileForm from "../components/forms/CreateProfileForm/CreateProfileForm";
 
 const Home: NextPage = () => {
   return (
@@ -13,6 +14,7 @@ const Home: NextPage = () => {
       <main>
         <div className="text-center">
           <h1 className="text-2xl">Enter Coding Challenge</h1>
+          <CreateProfileForm />
         </div>
       </main>
     </div>

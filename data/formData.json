@@ -42,13 +42,13 @@
           {
             "fieldId": "field_02",
             "type": "input",
-            "properties": {
+            "properties": [{
               "id": "input_01",
               "placeholder": "",
               "label": "First name",
               "description": "",
               "value": ""
-            },
+            }],
             "validation": {
               "required": true
             }
@@ -65,13 +65,13 @@
           {
             "fieldId": "field_03",
             "type": "input",
-            "properties": {
+            "properties": [{
               "id": "input_03",
               "placeholder": "",
               "label": "Last name",
               "description": "",
               "value": ""
-            },
+            }],
             "validation": {
               "required": false
             }
@@ -88,13 +88,13 @@
           {
             "fieldId": "field_04",
             "type": "input",
-            "properties": {
+            "properties": [{
               "id": "input_04",
               "placeholder": "",
               "label": "City",
               "description": "",
               "value": ""
-            },
+            }],
             "validation": {
               "required": true
             }
@@ -102,13 +102,13 @@
           {
             "fieldId": "field_05",
             "type": "input",
-            "properties": {
+            "properties": [{
               "id": "input_05",
               "placeholder": "12345",
               "label": "Zip Code",
               "description": "",
               "value": ""
-            },
+            }],
             "validation": {
               "required": true
             }
@@ -126,13 +126,13 @@
             "fieldId": "field_06",
             "type": "input",
             "title": "",
-            "properties": {
+            "properties": [{
               "id": "input_06",
               "placeholder": "example@mail.com",
               "label": "Email",
               "description": "Your email address will be your username",
               "value": ""
-            },
+            }],
             "validation": {
               "required": true,
               "string": "email"

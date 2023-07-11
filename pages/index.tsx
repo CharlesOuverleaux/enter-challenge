@@ -1,8 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import CreateProfileForm from "../components/forms/CreateProfileForm/CreateProfileForm";
+import formData from "../data/formData.json";
 
 const Home: NextPage = () => {
+  const { steps } = formData.data;
+
   return (
     <div>
       <Head>
@@ -15,6 +18,11 @@ const Home: NextPage = () => {
         <div className="text-center">
           <h1 className="text-2xl">Enter Coding Challenge</h1>
           <CreateProfileForm />
+          <ul>
+            {steps.map((step) => (
+              <li key={step.stepId}>{step.title}</li>
+            ))}
+          </ul>
         </div>
       </main>
     </div>

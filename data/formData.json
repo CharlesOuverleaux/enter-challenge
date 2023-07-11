@@ -1,0 +1,159 @@
+{
+  "version": "1.0.5",
+  "data": {
+    "steps": [
+      {
+        "stepId": "step_01",
+        "title": "Your type of creature",
+        "fields": [
+          {
+            "fieldId": "field_01",
+            "type": "radio",
+            "properties": [
+              {
+                "id": "radio_01",
+                "placeholder": "",
+                "label": "Human",
+                "description": "",
+                "value": "human"
+              },
+              {
+                "id": "radio_02",
+                "placeholder": "",
+                "label": "Robot",
+                "description": "",
+                "value": "robot"
+              }
+            ],
+            "validation": {
+              "required": true
+            }
+          }
+        ],
+        "secondaryButtonLabel": "",
+        "primaryButtonLabel": "Next step"
+      },
+      {
+        "stepId": "step_02",
+        "title": "Personal information",
+        "fields": [
+          {
+            "fieldId": "field_02",
+            "type": "input",
+            "properties": {
+              "id": "input_01",
+              "placeholder": "",
+              "label": "First name",
+              "description": "",
+              "value": ""
+            },
+            "validation": {
+              "required": true
+            }
+          }
+        ],
+        "secondaryButtonLabel": "Previous step",
+        "primaryButtonLabel": "Next step"
+      },
+      {
+        "stepId": "step_03",
+        "title": "Personal information",
+        "fields": [
+          {
+            "fieldId": "field_03",
+            "type": "input",
+            "properties": {
+              "id": "input_03",
+              "placeholder": "",
+              "label": "Last name",
+              "description": "",
+              "value": ""
+            },
+            "validation": {
+              "required": false
+            }
+          }
+        ],
+        "secondaryButtonLabel": "Previous step",
+        "primaryButtonLabel": "Next step"
+      },
+      {
+        "stepId": "step_04",
+        "title": "Contact information",
+        "fields": [
+          {
+            "fieldId": "field_04",
+            "type": "input",
+            "properties": {
+              "id": "input_04",
+              "placeholder": "",
+              "label": "City",
+              "description": "",
+              "value": ""
+            },
+            "validation": {
+              "required": true
+            }
+          },
+          {
+            "fieldId": "field_05",
+            "type": "input",
+            "properties": {
+              "id": "input_05",
+              "placeholder": "12345",
+              "label": "Zip Code",
+              "description": "",
+              "value": ""
+            },
+            "validation": {
+              "required": true
+            }
+          }
+        ],
+        "secondaryButtonLabel": "Previous step",
+        "primaryButtonLabel": "Next step"
+      },
+      {
+        "stepId": "step_05",
+        "title": "Account information",
+        "fields": [
+          {
+            "fieldId": "field_06",
+            "type": "input",
+            "title": "",
+            "properties": {
+              "id": "input_06",
+              "placeholder": "example@mail.com",
+              "label": "Email",
+              "description": "Your email address will be your username",
+              "value": ""
+            },
+            "validation": {
+              "required": true,
+              "string": "email"
+            }
+          }
+        ],
+        "secondaryButtonLabel": "Previous step",
+        "primaryButtonLabel": "Submit form"
+      }
+    ],
+    "logic": [
+      {
+        "target": "step_01",
+        "condition": [
+          {
+            "fieldId": "field_01",
+            "value": "human",
+            "destination": "step_02"
+          },
+          {
+            "fieldId": "field_01",
+            "value": "robot",
+            "destination": "step_05"
+          }
+        ]
+      }
+    ]
+  }
+}

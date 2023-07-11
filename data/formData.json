@@ -5,6 +5,7 @@
       {
         "stepId": "step_01",
         "title": "Your type of creature",
+        "description": "Please select your type of creature.",
         "fields": [
           {
             "fieldId": "field_01",
@@ -36,6 +37,7 @@
       {
         "stepId": "step_02",
         "title": "Personal information",
+        "description": "Please enter your personal information.",
         "fields": [
           {
             "fieldId": "field_02",
@@ -58,6 +60,7 @@
       {
         "stepId": "step_03",
         "title": "Personal information",
+        "description": "Please enter your personal information.",
         "fields": [
           {
             "fieldId": "field_03",
@@ -80,6 +83,7 @@
       {
         "stepId": "step_04",
         "title": "Contact information",
+        "description": "Please enter your contact information.",
         "fields": [
           {
             "fieldId": "field_04",
@@ -116,6 +120,7 @@
       {
         "stepId": "step_05",
         "title": "Account information",
+        "description": "Please enter your account information.",
         "fields": [
           {
             "fieldId": "field_06",

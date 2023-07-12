@@ -124,7 +124,7 @@
         "fields": [
           {
             "fieldId": "field_06",
-            "type": "input",
+            "type": "email",
             "title": "",
             "properties": [{
               "id": "input_06",
@@ -134,8 +134,7 @@
               "value": ""
             }],
             "validation": {
-              "required": true,
-              "string": "email"
+              "required": true
             }
           }
         ],

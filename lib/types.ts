@@ -46,7 +46,4 @@ export type FormFieldValidation = {
   string?: string;
 };
 
-export enum TypeFormField {
-  Radio = "radio",
-  Input = "input",
-}
+export type TypeFormField = "radio" | "input" | "email";

@@ -1,6 +1,9 @@
 import React, { FC, useState } from "react";
 import { isStepRequired } from "../../../helpers/isStepRequired";
 import { FormData, TypeFormField } from "../../../lib/types";
+import { isEmailValid } from "../../../helpers/isEmailValid";
+import { getFormDataResult } from "../../../helpers/getFormDataResults";
+import { useRouter } from "next/router";
 
 interface CreateProfileFormProps {
   formData: FormData;
@@ -15,6 +18,7 @@ const CreateProfileForm: FC<CreateProfileFormProps> = ({ formData }) => {
           stepId: step.stepId,
           fields: step.fields.map((field) => {
             return {
+              label: field.properties[0].label,
               fieldId: field.fieldId,
               value: "",
             };
@@ -24,11 +28,15 @@ const CreateProfileForm: FC<CreateProfileFormProps> = ({ formData }) => {
     },
   });
 
+  const [currentInput, setCurrentInput] = useState("");
+  const [displayError, setDisplayError] = useState(false);
+
   const { steps } = formData.data;
   const step = steps[stepIndex];
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    setCurrentInput(value);
     setFormValues({
       ...formValues,
       data: {
@@ -52,8 +60,16 @@ const CreateProfileForm: FC<CreateProfileFormProps> = ({ formData }) => {
   };
 
   const handleNextStep = (e: any) => {
-    e.preventDefault();
-    setStepIndex(stepIndex + 1);
+    const hasValue = currentInput.length > 0;
+    const isRequired = isStepRequired(step);
+
+    if (hasValue && isRequired) {
+      e.preventDefault();
+      setCurrentInput("");
+      setStepIndex(stepIndex + 1);
+    } else if (!isRequired) {
+      setStepIndex(stepIndex + 1);
+    }
   };
 
   const handlePreviousStep = (e: any) => {
@@ -61,18 +77,43 @@ const CreateProfileForm: FC<CreateProfileFormProps> = ({ formData }) => {
     setStepIndex(stepIndex - 1);
   };
 
-  const handleSubmit = (e: any) => {
+  const router = useRouter();
+
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(formValues);
-    alert("Submitted!");
-    setStepIndex(0);
+    const isCurrentEmailValid = isEmailValid(currentInput);
+
+    if (isCurrentEmailValid) {
+      setDisplayError(false);
+      try {
+        const response = await fetch("/api/saveData", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(getFormDataResult(formValues)),
+        });
+
+        if (response.ok) {
+          setCurrentInput("");
+          setStepIndex(0);
+          router.push("/profile");
+        } else {
+          console.error("Failed to save data");
+        }
+      } catch (error) {
+        console.error("An error occurred", error);
+      }
+    } else {
+      setDisplayError(true);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div key={step.stepId}>
         <p>{isStepRequired(step) ? "Required" : "Optional"}</p>
-        <fieldset>
+        <div>
           <legend className="text-sm font-semibold leading-6 text-gray-900">
             Question {stepIndex + 1} {step.title}
           </legend>
@@ -81,8 +122,8 @@ const CreateProfileForm: FC<CreateProfileFormProps> = ({ formData }) => {
           </p>
           <div className="mt-6 space-y-6">
             {step.fields.map((field) => (
-              <div key={field.fieldId}>
-                {(field.type as TypeFormField) === "radio" && (
+              <fieldset key={field.fieldId}>
+                {(field.type as TypeFormField) === "radio" ? (
                   <div className="flex justify-center gap-4">
                     {field.properties.map((property) => (
                       <div
@@ -107,8 +148,7 @@ const CreateProfileForm: FC<CreateProfileFormProps> = ({ formData }) => {
                       </div>
                     ))}
                   </div>
-                )}
-                {(field.type as TypeFormField) === "input" && (
+                ) : (
                   <div className="flex justify-center gap-4">
                     {field.properties.map((property) => (
                       <div
@@ -123,7 +163,7 @@ const CreateProfileForm: FC<CreateProfileFormProps> = ({ formData }) => {
                         </label>
                         <div className="mt-2">
                           <input
-                            type="text"
+                            type={field.type}
                             name={field.fieldId}
                             id={property.id}
                             required={field.validation?.required}
@@ -136,10 +176,13 @@ const CreateProfileForm: FC<CreateProfileFormProps> = ({ formData }) => {
                     ))}
                   </div>
                 )}
-              </div>
+              </fieldset>
             ))}
+            {displayError && (
+              <p className="text-red-500">Please input a valid email format</p>
+            )}
           </div>
-        </fieldset>
+        </div>
       </div>
       <div>
         {stepIndex > 0 && (

@@ -3,7 +3,6 @@
  * @param step - The step object containing fields and their validation rules.
  * @returns A boolean value indicating if the step is required.
  */
-
 export const isStepRequired = (step: any): boolean => {
   let isRequired = false;
 

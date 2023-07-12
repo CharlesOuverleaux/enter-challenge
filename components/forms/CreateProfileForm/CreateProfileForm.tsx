@@ -1,12 +1,13 @@
 import React, { FC, useState } from "react";
 import { isStepRequired } from "../../../helpers/isStepRequired";
-import { FormData, TypeFormField } from "../../../lib/types";
+import { FormData } from "../../../lib/types";
 import { isEmailValid } from "../../../helpers/isEmailValid";
 import { getFormDataResult } from "../../../helpers/getFormDataResults";
 import { useRouter } from "next/router";
 import FormQuestionType from "./FormQuestionType";
 import FormHeader from "./FormHeader";
 import FormInput from "./FormInput";
+import FormError from "./FormError";
 
 interface CreateProfileFormProps {
   formData: FormData;
@@ -128,9 +129,7 @@ const CreateProfileForm: FC<CreateProfileFormProps> = ({ formData }) => {
                 handleInputChange={handleInputChange}
               />
             ))}
-            {displayError && (
-              <p className="text-red-500">Please input a valid email format</p>
-            )}
+            {displayError && <FormError />}
           </div>
         </div>
       </div>

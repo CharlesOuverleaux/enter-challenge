@@ -4,6 +4,8 @@ import { FormData, TypeFormField } from "../../../lib/types";
 import { isEmailValid } from "../../../helpers/isEmailValid";
 import { getFormDataResult } from "../../../helpers/getFormDataResults";
 import { useRouter } from "next/router";
+import FormQuestionType from "./FormQuestionType";
+import FormHeader from "./FormHeader";
 
 interface CreateProfileFormProps {
   formData: FormData;
@@ -112,14 +114,11 @@ const CreateProfileForm: FC<CreateProfileFormProps> = ({ formData }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div key={step.stepId}>
-        <p>{isStepRequired(step) ? "Required" : "Optional"}</p>
+        <FormQuestionType
+          type={isStepRequired(step) ? "required" : "optional"}
+        />
         <div>
-          <legend className="text-sm font-semibold leading-6 text-gray-900">
-            Question {stepIndex + 1} {step.title}
-          </legend>
-          <p className="mt-1 text-sm leading-6 text-gray-600">
-            {step.description}
-          </p>
+          <FormHeader step={step} stepIndex={stepIndex} />
           <div className="mt-6 space-y-6">
             {step.fields.map((field) => (
               <fieldset key={field.fieldId}>

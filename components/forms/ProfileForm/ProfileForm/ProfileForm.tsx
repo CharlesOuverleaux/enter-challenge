@@ -1,16 +1,16 @@
-import React, { FC, useEffect, useState } from "react";
-import { isStepRequired } from "../../../../helpers/isStepRequired";
+import { FC, useEffect, useState } from "react";
 import { FormData } from "../../../../lib/types";
-import { isEmailValid } from "../../../../helpers/isEmailValid";
 import { useRouter } from "next/router";
 import FormQuestionType from "../FormQuestionType/FormQuestionType";
 import FormHeader from "../FormHeader/FormHeader";
 import FormInput from "../FormInput/FormInput";
 import FormError from "../FormError/FormError";
+import Button from "../../../actions/Button/Button";
+import { isStepRequired } from "../../../../helpers/isStepRequired";
+import { isEmailValid } from "../../../../helpers/isEmailValid";
 import { getNextStepLogic } from "../../../../helpers/getNextStepLogic";
 import { getFormResults } from "../../../../helpers/getFormResults";
 import { getUpdatedSteps } from "../../../../helpers/getUpdatedSteps";
-import Button from "../../../actions/Button/Button";
 import clsx from "clsx";
 
 interface ProfileFormProps {
@@ -106,7 +106,10 @@ const ProfileForm: FC<ProfileFormProps> = ({ formData }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className="border p-4 bg-white rounded-2xl shadow-lg w-[512px]"
+    >
       <div key={currentStep.stepId}>
         <FormQuestionType
           type={isStepRequired(currentStep) ? "required" : "optional"}

@@ -15,7 +15,9 @@ const Home: NextPage = () => {
       <main>
         <div className="text-center">
           <h1 className="text-2xl">Enter Coding Challenge</h1>
-          <ProfileForm formData={formData.data} />
+          <div className="flex justify-center">
+            <ProfileForm formData={formData.data} />
+          </div>
         </div>
       </main>
     </div>

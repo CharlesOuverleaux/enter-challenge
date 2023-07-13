@@ -23,6 +23,11 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 ```bash
 npm test
 ```
+
+## Demo
+
+[Loom Video of the Demo](https://www.loom.com/share/af5c23a182234c548792263cf429abeb?sid=cd8e5006-ae80-4bee-a0c5-9429e0ab1dec)
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

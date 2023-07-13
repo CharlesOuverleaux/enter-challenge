@@ -4,6 +4,7 @@ import UserData from "../../../data/userData.json";
 const UserProfile: FC = () => {
   return (
     <div className="text-center">
+      <h1>User profile</h1>
       {UserData.steps.map((step) => (
         <ul key={step.stepId}>
           {step.fields.map((field) => {

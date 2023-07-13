@@ -136,14 +136,14 @@ const CreateProfileForm: FC<CreateProfileFormProps> = ({ formData }) => {
       <div>
         {stepIndex > 0 && (
           <button onClick={handlePreviousStep}>
-            {step.secondaryButtonLabel}
+            {step.primaryButtonLabel}
           </button>
         )}
         {stepIndex < formData.data.steps.length - 1 && (
-          <button onClick={handleNextStep}>{step.primaryButtonLabel}</button>
+          <button onClick={handleNextStep}>{step.secondaryButtonLabel}</button>
         )}
         {stepIndex === formData.data.steps.length - 1 && (
-          <button onClick={handleSubmit}>{step.primaryButtonLabel}</button>
+          <button onClick={handleSubmit}>{step.secondaryButtonLabel}</button>
         )}
       </div>
     </form>

@@ -31,8 +31,9 @@
             }
           }
         ],
-        "secondaryButtonLabel": "",
-        "primaryButtonLabel": "Next step"
+        "primaryButtonLabel": "",
+        "secondaryButtonLabel": "Next step"
+        
       },
       {
         "stepId": "step_02",
@@ -54,8 +55,8 @@
             }
           }
         ],
-        "secondaryButtonLabel": "Previous step",
-        "primaryButtonLabel": "Next step"
+        "primaryButtonLabel": "Previous step",
+        "secondaryButtonLabel": "Next step"
       },
       {
         "stepId": "step_03",
@@ -77,8 +78,9 @@
             }
           }
         ],
-        "secondaryButtonLabel": "Previous step",
-        "primaryButtonLabel": "Next step"
+        "primaryButtonLabel": "Previous step",
+        "secondaryButtonLabel": "Next step"
+        
       },
       {
         "stepId": "step_04",
@@ -114,8 +116,8 @@
             }
           }
         ],
-        "secondaryButtonLabel": "Previous step",
-        "primaryButtonLabel": "Next step"
+        "primaryButtonLabel": "Previous step",
+        "secondaryButtonLabel": "Next step"
       },
       {
         "stepId": "step_05",
@@ -138,8 +140,8 @@
             }
           }
         ],
-        "secondaryButtonLabel": "Previous step",
-        "primaryButtonLabel": "Submit form"
+        "primaryButtonLabel": "Previous step",
+        "secondaryButtonLabel": "Submit form"
       }
     ],
     "logic": [

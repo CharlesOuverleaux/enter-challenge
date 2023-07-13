@@ -6,7 +6,7 @@
         {
           "fieldId": "field_01",
           "fieldTitle": "userType",
-          "userInput": "human"
+          "userInput": "robot"
         }
       ]
     },
@@ -16,7 +16,7 @@
         {
           "fieldId": "field_02",
           "fieldTitle": "firstName",
-          "userInput": "aa"
+          "userInput": ""
         }
       ]
     },
@@ -36,12 +36,12 @@
         {
           "fieldId": "field_04",
           "fieldTitle": "addressCity",
-          "userInput": "AAAA"
+          "userInput": ""
         },
         {
           "fieldId": "field_05",
           "fieldTitle": "addressZipCode",
-          "userInput": "12345"
+          "userInput": ""
         }
       ]
     },

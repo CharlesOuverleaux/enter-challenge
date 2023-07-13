@@ -9,7 +9,7 @@ interface FormInputProps {
 
 const FormInput: FC<FormInputProps> = ({ field, handleInputChange }) => {
   return (
-    <fieldset className="flex justify-start pb-4">
+    <fieldset className="flex justify-start py-4">
       {(field.type as TypeFormField) === "radio" ? (
         <div className="flex justify-center gap-4">
           {field.properties.map((property) => (

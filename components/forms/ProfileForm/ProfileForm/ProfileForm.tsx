@@ -10,6 +10,7 @@ import FormError from "../FormError/FormError";
 import { getNextStepLogic } from "../../../../helpers/getNextStepLogic";
 import { getFormResults } from "../../../../helpers/getFormResults";
 import { getUpdatedSteps } from "../../../../helpers/getUpdatedSteps";
+import Button from "../../../actions/Button/Button";
 
 interface ProfileFormProps {
   formData: FormData;
@@ -125,19 +126,25 @@ const ProfileForm: FC<ProfileFormProps> = ({ formData }) => {
       </div>
       <div>
         {stepIndex > 0 && (
-          <button onClick={handlePreviousStep}>
-            {currentStep.primaryButtonLabel}
-          </button>
+          <Button
+            ctaText={currentStep.primaryButtonLabel}
+            onClick={handlePreviousStep}
+            style="primary"
+          />
         )}
         {stepIndex < formData.steps.length - 1 && (
-          <button onClick={handleNextStep}>
-            {currentStep.secondaryButtonLabel}
-          </button>
+          <Button
+            ctaText={currentStep.secondaryButtonLabel}
+            onClick={handleNextStep}
+            style="secondary"
+          />
         )}
         {stepIndex === formData.steps.length - 1 && (
-          <button onClick={handleSubmit}>
-            {currentStep.secondaryButtonLabel}
-          </button>
+          <Button
+            ctaText={currentStep.secondaryButtonLabel}
+            onClick={handleSubmit}
+            style="secondary"
+          />
         )}
       </div>
     </form>

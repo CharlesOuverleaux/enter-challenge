@@ -11,6 +11,7 @@ import { getNextStepLogic } from "../../../../helpers/getNextStepLogic";
 import { getFormResults } from "../../../../helpers/getFormResults";
 import { getUpdatedSteps } from "../../../../helpers/getUpdatedSteps";
 import Button from "../../../actions/Button/Button";
+import clsx from "clsx";
 
 interface ProfileFormProps {
   formData: FormData;
@@ -112,7 +113,7 @@ const ProfileForm: FC<ProfileFormProps> = ({ formData }) => {
         />
         <div>
           <FormHeader step={currentStep} stepIndex={stepIndex} />
-          <div className="mt-6 space-y-6">
+          <div className="mt-6 relative">
             {currentStep.fields.map((field) => (
               <FormInput
                 key={field.fieldId}
@@ -120,11 +121,20 @@ const ProfileForm: FC<ProfileFormProps> = ({ formData }) => {
                 handleInputChange={handleInputChange}
               />
             ))}
-            {displayError && <FormError />}
+            {displayError && (
+              <div className="absolute top-0">
+                <FormError />
+              </div>
+            )}
           </div>
         </div>
       </div>
-      <div>
+      <div
+        className={clsx(
+          "flex",
+          stepIndex > 0 ? "justify-between" : "justify-end"
+        )}
+      >
         {stepIndex > 0 && (
           <Button
             ctaText={currentStep.primaryButtonLabel}

@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { isStepRequired } from "../../../helpers/isStepRequired";
 import { FormData } from "../../../lib/types";
 import { isEmailValid } from "../../../helpers/isEmailValid";
@@ -34,9 +34,35 @@ const CreateProfileForm: FC<CreateProfileFormProps> = ({ formData }) => {
 
   const [currentInput, setCurrentInput] = useState("");
   const [displayError, setDisplayError] = useState(false);
+  const [stepDestination, setStepDestination] = useState("");
 
-  const { steps } = formData.data;
+  const { steps, logic } = formData.data;
   const step = steps[stepIndex];
+
+  useEffect(() => {
+    const checkNextStepLogic = () => {
+      for (const rule of logic) {
+        const { condition } = rule;
+        for (const stepRule of condition) {
+          const { fieldId, value, destination } = stepRule;
+          const field = formValues.data.steps[stepIndex].fields.find(
+            (f) => f.fieldId === fieldId
+          );
+
+          if (field && field.value === value) {
+            setStepDestination(destination);
+            return;
+          }
+        }
+      }
+
+      setStepDestination("");
+    };
+
+    checkNextStepLogic();
+  }, [formValues, stepIndex, logic]);
+
+  console.log(stepDestination);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -66,13 +92,23 @@ const CreateProfileForm: FC<CreateProfileFormProps> = ({ formData }) => {
   const handleNextStep = (e: any) => {
     const hasValue = currentInput.length > 0;
     const isRequired = isStepRequired(step);
+    const nextStepIndex = stepIndex + 1;
 
     if (hasValue && isRequired) {
       e.preventDefault();
       setCurrentInput("");
-      setStepIndex(stepIndex + 1);
+      setStepIndex(nextStepIndex);
     } else if (!isRequired) {
-      setStepIndex(stepIndex + 1);
+      setStepIndex(nextStepIndex);
+    }
+
+    if (stepDestination) {
+      const destinationIndex = steps.findIndex(
+        (step) => step.stepId === stepDestination
+      );
+      if (destinationIndex !== -1) {
+        setStepIndex(destinationIndex);
+      }
     }
   };
 

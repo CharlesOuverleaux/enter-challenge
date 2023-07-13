@@ -1,9 +1,11 @@
-export type FormData = {
+export type ProfileForm = {
   version: string;
-  data: {
-    steps: FormStep[];
-    logic: FormLogic[];
-  };
+  data: FormData;
+};
+
+export type FormData = {
+  steps: FormStep[];
+  logic: FormLogic[];
 };
 
 export type FormStep = {
@@ -28,6 +30,8 @@ export type FormCondition = {
 
 export type FormField = {
   fieldId: string;
+  fieldLabel: string;
+  userInput: string;
   type: string;
   properties: FormFieldProperty[];
   validation: FormFieldValidation;
@@ -47,3 +51,14 @@ export type FormFieldValidation = {
 };
 
 export type TypeFormField = "radio" | "input" | "email";
+
+export type FormResults = {
+  steps: {
+    stepId: string;
+    fields: {
+      fieldId: string;
+      fieldTitle: string;
+      userInput: string;
+    }[];
+  }[];
+};

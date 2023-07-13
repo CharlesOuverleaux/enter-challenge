@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import CreateProfileForm from "../components/forms/CreateProfileForm/CreateProfileForm";
+import ProfileForm from "../components/forms/ProfileForm/ProfileForm";
 import formData from "../data/formData.json";
 
 const Home: NextPage = () => {
@@ -15,7 +15,7 @@ const Home: NextPage = () => {
       <main>
         <div className="text-center">
           <h1 className="text-2xl">Enter Coding Challenge</h1>
-          <CreateProfileForm formData={formData} />
+          <ProfileForm formData={formData.data} />
         </div>
       </main>
     </div>

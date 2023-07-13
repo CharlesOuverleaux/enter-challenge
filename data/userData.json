@@ -1,6 +1,59 @@
 {
-  "Human": "robot",
-  "First name": "aa",
-  "City": "Berlin",
-  "Email": "q@g.com"
+  "steps": [
+    {
+      "stepId": "step_01",
+      "fields": [
+        {
+          "fieldId": "field_01",
+          "fieldTitle": "userType",
+          "userInput": "robot"
+        }
+      ]
+    },
+    {
+      "stepId": "step_02",
+      "fields": [
+        {
+          "fieldId": "field_02",
+          "fieldTitle": "firstName",
+          "userInput": ""
+        }
+      ]
+    },
+    {
+      "stepId": "step_03",
+      "fields": [
+        {
+          "fieldId": "field_03",
+          "fieldTitle": "lastName",
+          "userInput": ""
+        }
+      ]
+    },
+    {
+      "stepId": "step_04",
+      "fields": [
+        {
+          "fieldId": "field_04",
+          "fieldTitle": "addressCity",
+          "userInput": ""
+        },
+        {
+          "fieldId": "field_05",
+          "fieldTitle": "addressZipCode",
+          "userInput": ""
+        }
+      ]
+    },
+    {
+      "stepId": "step_05",
+      "fields": [
+        {
+          "fieldId": "field_06",
+          "fieldTitle": "email",
+          "userInput": "a@a.com"
+        }
+      ]
+    }
+  ]
 }

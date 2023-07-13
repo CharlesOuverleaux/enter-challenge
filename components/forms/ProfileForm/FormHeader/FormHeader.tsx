@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { FormStep } from "../../../lib/types";
+import { FormStep } from "../../../../lib/types";
 
 interface FormHeaderProps {
   step: FormStep;

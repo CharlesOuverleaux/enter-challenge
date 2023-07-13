@@ -1,15 +1,15 @@
 import React, { FC, useEffect, useState } from "react";
-import { isStepRequired } from "../../../helpers/isStepRequired";
-import { FormData } from "../../../lib/types";
-import { isEmailValid } from "../../../helpers/isEmailValid";
+import { isStepRequired } from "../../../../helpers/isStepRequired";
+import { FormData } from "../../../../lib/types";
+import { isEmailValid } from "../../../../helpers/isEmailValid";
 import { useRouter } from "next/router";
-import FormQuestionType from "./FormQuestionType";
-import FormHeader from "./FormHeader";
-import FormInput from "./FormInput";
-import FormError from "./FormError";
-import { getNextStepLogic } from "../../../helpers/getNextStepLogic";
-import { getFormResults } from "../../../helpers/getFormResults";
-import { getUpdatedSteps } from "../../../helpers/getUpdatedSteps";
+import FormQuestionType from "../FormQuestionType/FormQuestionType";
+import FormHeader from "../FormHeader/FormHeader";
+import FormInput from "../FormInput/FormInput";
+import FormError from "../FormError/FormError";
+import { getNextStepLogic } from "../../../../helpers/getNextStepLogic";
+import { getFormResults } from "../../../../helpers/getFormResults";
+import { getUpdatedSteps } from "../../../../helpers/getUpdatedSteps";
 
 interface ProfileFormProps {
   formData: FormData;

@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import ProfileForm from "../components/forms/ProfileForm/ProfileForm";
+import ProfileForm from "../components/forms/ProfileForm/ProfileForm/ProfileForm";
 import formData from "../data/formData.json";
 
 const Home: NextPage = () => {
